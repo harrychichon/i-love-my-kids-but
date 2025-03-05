@@ -1,0 +1,149 @@
+@property --offWhite {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #f9f9f9;
+}
+
+@property --nearBlack {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #1a1a1a;
+}
+
+@property --red {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #FF0000;
+}
+
+@property --darkerRed {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #CC0000;
+}
+
+@property --blue {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #3B4CCA;
+}
+
+@property --gold {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #B3A125;
+}
+
+@property --goldHighlight {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #FFDE00;
+}
+
+@property --bug {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #A6B91A;
+
+}
+@property --dark {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #705746;
+}
+
+@property --dragon {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #6F35FC;
+}
+
+@property --electric {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #F7D02C;
+}
+
+@property --fairy {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #D685AD;
+}
+
+@property --fighting {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #C22E28;
+}
+
+@property --fire {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #EE8130;
+}
+
+@property --flying {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #A98FF3;
+}
+
+@property --ghost {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #735797;
+}
+
+@property --grass {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #7AC74C;
+}
+
+@property --ground {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #E2BF65;
+}
+
+@property --ice {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #96D9D6;
+}
+
+@property --normal {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #A8A77A;
+}
+
+@property --poison {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #A33EA1;
+}
+
+@property --psychic {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #F95587;
+}
+
+@property --rock {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #B6A136;
+}
+
+@property --steel {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #B7B7CE;
+}
+
+@property --water {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #6390F0;
+}

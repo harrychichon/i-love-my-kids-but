@@ -1,0 +1,89 @@
+@mixin button() {
+  align-content: center;
+  height: 40px;
+  width: 100%;
+  max-width: 200px;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1rem;
+  border-radius: 30px;
+}
+
+@mixin accentText() {
+  font-family: "Press Start 2P", system-ui;
+}
+
+@mixin typeColors() {
+  .bug {
+    background: var(--bug);
+  }
+
+  .dark {
+    background: var(--dark);
+  }
+
+  .dragon {
+    background: var(--dragon);
+  }
+
+  .electric {
+    background: var(--electric);
+  }
+
+  .fairy {
+    background: var(--fairy);
+  }
+
+  .fighting {
+    background: var(--fighting);
+  }
+
+  .fire {
+    background: var(--fire);
+  }
+
+  .flying {
+    background: var(--flying);
+  }
+
+  .ghost {
+    background: var(--ghost);
+  }
+
+  .grass {
+    background: var(--grass);
+  }
+
+  .ground {
+    background: var(--ground);
+  }
+
+  .ice {
+    background: var(--ice);
+  }
+
+  .normal {
+    background: var(--normal);
+  }
+
+  .poison {
+    background: var(--poison);
+  }
+
+  .psychic {
+    background: var(--psychic);
+  }
+
+  .rock {
+    background: var(--rock);
+  }
+
+  .steel {
+    background: var(--steel);
+  }
+
+  .water {
+    background: var(--water);
+  }
+}

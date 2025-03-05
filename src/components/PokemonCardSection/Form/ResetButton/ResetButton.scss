@@ -1,0 +1,21 @@
+@import '../../../../styles/forwards';
+
+.ResetButton {
+  @include button();
+  @include accentText();
+  letter-spacing: 0.001rem;
+  font-size: 0.6rem;
+  border: none;
+  background: var(--red);
+
+  &:hover {
+    background: var(--red);
+    border: 3px solid var(--nearBlack);
+
+  }
+
+  &:active {
+    background: linear-gradient(0deg, var(--red), var(--darkerRed));
+
+  }
+}

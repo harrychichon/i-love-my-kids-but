@@ -1,0 +1,48 @@
+@import '../../../styles/forwards';
+
+
+.PokemonCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  height: 295px;
+  width: 200px;
+  padding: 10px;
+  border: var(--offWhite) solid 5px;
+  border-radius: 10px;
+  background: rgb(255, 186, 150);
+  background: linear-gradient(180deg, rgba(255, 186, 150, 1) 0%, rgba(255, 145, 87, 1) 100%);
+  color: var(--nearBlack);
+
+  h2 {
+    @include accentText();
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    padding: 0
+  }
+
+  img {
+    border-radius: 100px;
+    background: var(--offWhite);
+    background: linear-gradient(180deg, rgb(174, 245, 255) 0%, rgb(61, 170, 187) 100%);
+    box-shadow: inset rgba(26, 26, 26, 0.2) 0 0 50px 3px, rgba(26, 26, 26, 0.55) 3px 3px 10px 0;
+  }
+
+  tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+  }
+
+  td {
+    padding: 5px 10px 5px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    font-weight: bold;
+    border: 2px solid var(--offWhite);
+  }
+  @include typeColors();
+}

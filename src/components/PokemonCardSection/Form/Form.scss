@@ -1,0 +1,27 @@
+@import '../../../styles/forwards';
+
+.Form {
+  display: flex;
+  width: fit-content;
+  max-width: 350px;
+  height: fit-content;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  flex-flow: column wrap;
+  gap: 15px;
+  padding: 25px;
+  border-radius: var(--borderRadiusDefault);
+  background-color: var(--offWhite);
+  color: var(--nearBlack);
+}
+
+#shiny {
+  @include button();
+  background: linear-gradient(355deg, var(--gold), var(--goldHighlight));
+
+  input {
+    display: none;
+  }
+}
