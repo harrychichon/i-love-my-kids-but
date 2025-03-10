@@ -18,17 +18,17 @@ export default function PokemonCard({
 
 
 	return (
-		<article className="PokemonCard">
-				<h2>{name.toUpperCase()}</h2>
-				<img src={sprite}
-				     alt="An image of the pokemon" />
-				<table>
-					<tbody>
-					<tr>
-						{types()}
-					</tr>
-					</tbody>
-				</table>
+		<article className="PokemonCard" id={name}>
+			<h2>{name.toUpperCase()}</h2>
+			<img src={sprite}
+			     alt="An image of the pokemon" />
+			<table>
+				<tbody>
+				<tr>
+					{types()}
+				</tr>
+				</tbody>
+			</table>
 		</article>
 
 	);

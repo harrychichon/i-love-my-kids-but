@@ -1,49 +1,54 @@
 @import '../../styles/forwards';
 
 
+//TODO Hur får jag innehållet i  kortcontainern att centreras med grid och flex-start?!
 .PokemonCardSection {
   display: grid;
   grid-template-areas:
-  'Heading Heading'
-  'Form Cards';
-  grid-template-columns: 2fr 5fr;
+  'Header Header Header'
+  'Form Cards Effectiveness'
+  'Teams Teams Teams';
+  grid-template-columns: 2fr 3fr 2fr;
+  grid-template-rows: 1fr 10fr 2fr;
   background-image: url('https://wallpapercave.com/wp/wp10425519.png');
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
   height: 100vh;
   overflow: auto;
-  grid-gap: 2rem;
+  grid-column-gap: 2rem;
+}
+
+header {
+  grid-area: Header;
+  display: flex;
+  justify-content: center;
+  background-color: var(--offWhite);
+  width: 100%;
 }
 
 .Heading {
-  position: sticky;
-  top: 0;
-  justify-self: center;
-  align-self: start;
-  grid-area: Heading;
-  width: 350px;
+  @include accentText();
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
   height: 40px;
-  border-radius: 0 0 var(--borderRadiusDefault) var(--borderRadiusDefault);
-  background: var(--offWhite);
+  border-radius: 30px;
+  border: 3px solid var(--nearBlack);
   color: var(--nearBlack);
-  margin-block-start: 0;
 }
 
 
 .Filter {
-  position: sticky;
-  top: 92px;
   grid-area: Form;
-  justify-self: center;
+  justify-self: flex-end;
   height: fit-content;
   width: fit-content;
-  margin-inline-start: 10px;
+  margin-inline-start: 25px;
+  margin-block-start: 25px;
 }
 
-.PokemonCard {
-  box-shadow: rgba(26, 26, 26, 0.31) 5px 5px 10px 5px;
-}
 
 .FilteredResults {
   grid-area: Cards;
@@ -51,5 +56,26 @@
   flex-flow: row wrap;
   justify-content: flex-start;
   align-content: flex-start;
+  align-items: center;
   gap: 25px;
+  overflow: scroll;
+  scrollbar-width: none;
+
+}
+
+.PokemonCard {
+  box-shadow: rgba(26, 26, 26, 0.31) 3px 3px 10px 2px;
+}
+
+.Effectiveness {
+  grid-area: Effectiveness;
+  justify-self: flex-start;
+  height: fit-content;
+  width: fit-content;
+  margin-inline-end: 25px;
+  margin-block-start: 25px;
+}
+
+.Teams {
+  grid-area: Teams;
 }

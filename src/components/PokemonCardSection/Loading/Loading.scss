@@ -1,0 +1,59 @@
+.Loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 80vh;
+  width: 100vw;
+
+  @keyframes LoadingIcon {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    5% {
+      transform: rotate(25deg);
+    }
+    7% {
+      transform: rotate(30deg);
+    }
+    12% {
+      transform: rotate(-27deg);
+    }
+    15% {
+      transform: rotate(-30deg);
+    }
+    20% {
+      transform: rotate(27deg);
+    }
+    22% {
+      transform: rotate(30deg);
+    }
+    27% {
+      transform: rotate(-27deg);
+    }
+    30% {
+      transform: rotate(-30deg);
+    }
+    35% {
+      transform: translateY(-8rem);
+    }
+    40% {
+      transform: translateY(-10rem);
+    }
+    45% {
+      transform: translateY(-2rem);
+    }
+    50% {
+      transform: translateY(0) rotate(0deg);
+    }
+  }
+
+
+  .LoadingIcon {
+    animation: LoadingIcon 2s ease-in-out infinite;
+    width: 10rem;
+    height: 10rem;
+    margin: 10rem;
+  }
+
+}

@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-content: center;
-  height: 295px;
+  height: fit-content;
   width: 200px;
   padding: 10px;
   border: var(--offWhite) solid 5px;
@@ -37,12 +37,18 @@
   }
 
   td {
-    padding: 5px 10px 5px 10px;
-    border-radius: 15px;
-    font-size: 0.75rem;
-    line-height: 0.75rem;
-    font-weight: bold;
-    border: 2px solid var(--offWhite);
+    @include typeIcons
   }
+
   @include typeColors();
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: var(--offWhite);
+  }
 }

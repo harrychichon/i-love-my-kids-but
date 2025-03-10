@@ -1,16 +1,16 @@
-import './App.css'
+import './App.css';
 import PokemonCardSection
   from './components/PokemonCardSection/PokemonCardSection.tsx';
 
 function App() {
 
-  return (
-    <>
-      <div id="rooasdt">
-        <PokemonCardSection />
-      </div>
-    </>
-  )
+	return (
+		<>
+			<div id="app">
+				<PokemonCardSection />
+			</div>
+		</>
+	);
 }
 
-export default App
+export default App;

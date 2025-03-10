@@ -1,0 +1,101 @@
+@import '../../../styles/forwards';
+
+//TODO @include typeColors i typeIcons så endast en behöver kallas när man vill ha båda
+
+.Effectiveness {
+  @include typeColors();
+  @include typeIcons();
+
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  width: 290px;
+  height: fit-content;
+  gap: 15px;
+  padding: 15px 25px 25px 25px;
+  border-radius: var(--borderRadiusDefault);
+  border: var(--nearBlack) solid 3px;
+  background-color: var(--offWhite);
+  color: var(--nearBlack);
+
+  .ActiveType {
+    width: 100%;
+  }
+
+  h2 {
+    @include accentText();
+    font-size: 1rem;
+  }
+
+  legend {
+    @include accentText;
+    font-size: 0.7rem;
+  }
+
+  select {
+    width: fit-content;
+    text-align: center;
+  }
+}
+
+
+.Attacking, .Defending {
+  display: grid;
+  grid-template-areas:
+'x2 x½ x0';
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-self: center;
+  align-self: center;
+  padding: 15px;
+  width: 100%;
+  margin-block-start: 15px;
+  @include typeColors();
+
+  .ActiveType {
+    display: flex;
+    flex-flow: column;
+    align-content: space-between;
+  }
+
+  .Double {
+    grid-area: x2;
+  }
+
+  .Half {
+    grid-area: x½;
+  }
+
+  .Zero {
+    grid-area: x0;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding: 0;
+    margin: 0;
+  }
+
+}
+
+
+li, h3, select, option {
+
+  @include typeIcons();
+  border-color: var(--nearBlack);
+  list-style: none;
+  margin: 5px;
+  justify-self: center;
+  align-self: center;
+  padding: 5px 10px 5px 10px;
+  border-radius: 15px;
+  border: 2px solid var(--nearBlack);
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+  font-weight: bold;
+}

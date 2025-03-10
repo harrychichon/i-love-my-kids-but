@@ -1,0 +1,21 @@
+@use '../../../../styles/forwards';
+
+.SearchBar {
+  @include forwards.mainText;
+  border-radius: var(--borderRadiusDefault);
+  padding: 5px;
+  text-indent: 5px;
+  border: 2px solid var(--nearBlack);
+  background-color: white;
+  color: var(--nearBlack);
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+
+
+  &:focus {
+    outline: 3px solid var(--blue);
+    border: none;
+  }
+}

@@ -4,18 +4,20 @@
   @include button();
   @include accentText();
   letter-spacing: 0.001rem;
-  font-size: 0.6rem;
-  border: none;
-  background: var(--red);
+  font-size: 0.7rem;
+  background: var(--blue);
+  border: 3px solid var(--nearBlack);
+  box-shadow: var(--nearBlack) 4px 6px 0 0;
+  transform-origin: top left;
 
   &:hover {
-    background: var(--red);
-    border: 3px solid var(--nearBlack);
-
+    text-transform: full-width;
+    font-size: 0.65rem;
+    animation-duration: 5s;
   }
 
   &:active {
-    background: linear-gradient(0deg, var(--red), var(--darkerRed));
-
+    transform: translate(4px, 6px);
+    box-shadow: none;
   }
 }

@@ -4,8 +4,11 @@ import PokemonCard from './PokemonCard/PokemonCard.tsx';
 import useFetch from '../../hooks/useFetch.tsx';
 import Form from './Form/Form.tsx';
 import mapTypes from '../../utils/MapTypes.tsx';
+import Loading from './Loading/Loading.tsx';
+import Effectiveness from './Effectiveness/Effectiveness.tsx';
 
-type PokemonType = {
+
+export type Pokemon = {
 	abilities: Array<{
 		ability: {
 			name: string
@@ -264,30 +267,44 @@ type PokemonType = {
 	weight: number
 }
 
-//TODO Flytta CSS till berörd komponent
-//TODO Skapa variabler, mixins och forwards
-//TODO Ta bort överflödig CSS
-//TODO använd @Containers för active/inactive filters
-//TODO använd display:contents;
-
+type PokemonResult = {
+	name: string;
+	url: string;
+};
 
 export default function PokemonCardSection() {
-	const {loading, allPokemon} = useFetch("https://pokeapi.co/api/v2/pokemon/?limit=151")
-	const [filteredPokemon, setFilteredPokemon] = useState<PokemonType[] | null>(null);
+
+
+	const isPokemon = (data: unknown): data is Pokemon =>
+		typeof data === 'object' && data !== null && 'weight' in data;
+
+	const {loading, data: allPokemon} = useFetch<PokemonResult, Pokemon>(
+		'https://pokeapi.co/api/v2/pokemon?limit=151',
+		isPokemon,
+	);
+
+
+	const [filteredPokemon, setFilteredPokemon] = useState<Pokemon[] | null>(null);
 	const [searchQuery, setSearchQuery] = useState<string>('');
 	const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
 	const [shiny, setShiny] = useState(false);
 
 	const handleClick = () => {
 		setFilteredPokemon((prev) => (prev === allPokemon ? prev : allPokemon));
+		setSearchQuery('');
+		setSelectedTypes([]);
 		setShiny(false);
 
-		const shinyCheckbox = document.getElementById("shinyInput") as HTMLInputElement;
-		if (shinyCheckbox) {
-			shinyCheckbox.checked = false;
+		const checkboxes = document.getElementsByClassName('TypeCheckbox') as HTMLCollectionOf<HTMLInputElement>;
+		for (const checkbox of checkboxes) {
+			checkbox.checked = false;
+		}
+
+		const shinyToggle = document.getElementById('toggle') as HTMLInputElement;
+		if (shinyToggle) {
+			shinyToggle.checked = false;
 		}
 	};
-
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -298,8 +315,8 @@ export default function PokemonCardSection() {
 			setSearchQuery(lowercaseValue);
 		} else if (type === 'checkbox') {
 
-			if (e.target.id === "shinyInput") {
-				setShiny(!!checked)
+			if (e.target.id === 'toggle') {
+				setShiny(!!checked);
 
 			} else {
 				setSelectedTypes((prevTypes) =>
@@ -309,7 +326,7 @@ export default function PokemonCardSection() {
 				);
 			}
 		}
-	}
+	};
 
 
 	useEffect(() => {
@@ -333,22 +350,24 @@ export default function PokemonCardSection() {
 	}, [searchQuery, selectedTypes, allPokemon]);
 
 
+	if (loading) return <Loading />;
 
-
-	if (loading) return <p>Loading...</p>
 
 	return (
 		<>
 			<div className="PokemonCardSection">
-				<h2 className="Heading">Pokemon Card Collection</h2>
+				<header>
+					<h2 className="Heading">Pokémon</h2>
+				</header>
 				<section className="Filter">
-					<Form searchQuery={searchQuery} onChange={handleChange} onClick={handleClick}
+					<Form searchQuery={searchQuery} onChange={handleChange}
+					      onClick={handleClick}
 
 
 					/>
 				</section>
 				{loading ? (
-					<p>Loading...</p>
+					<Loading />
 				) : (
 					<section className="FilteredResults">
 						{filteredPokemon?.map((pokemon) => (
@@ -361,6 +380,7 @@ export default function PokemonCardSection() {
 						))}
 					</section>
 				)}
+				<section><Effectiveness /></section>
 			</div>
 		</>
 	);

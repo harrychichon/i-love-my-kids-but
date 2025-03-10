@@ -1,27 +1,43 @@
 @import '../../../styles/forwards';
 
+//TODO Gen/Region/version(game name)
+//TODO Move
+
+
 .Form {
   display: flex;
-  width: fit-content;
-  max-width: 350px;
-  height: fit-content;
   align-content: center;
   justify-content: center;
   justify-items: center;
   align-items: center;
   flex-flow: column wrap;
+  width: 290px;
+  height: fit-content;
   gap: 15px;
-  padding: 25px;
+  padding: 0 25px 25px 25px;
   border-radius: var(--borderRadiusDefault);
+  border: var(--nearBlack) solid 3px;
   background-color: var(--offWhite);
   color: var(--nearBlack);
+  overflow: hidden;
+
 }
 
-#shiny {
-  @include button();
-  background: linear-gradient(355deg, var(--gold), var(--goldHighlight));
+.Name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% + 50px);
+  height: 50px;
+  background-color: var(--darkerRed);
+}
 
-  input {
-    display: none;
+.Toggle {
+  border: none;
+  box-shadow: none;
+
+  &:has(input:checked) {
+    border: none;
+    transform: none;
   }
 }
