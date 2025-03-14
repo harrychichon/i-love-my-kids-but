@@ -1,13 +1,16 @@
 import './App.css';
 import PokemonCardSection
-  from './components/PokemonCardSection/PokemonCardSection.tsx';
+	from './components/PokemonCardSection/PokemonCardSection.tsx';
+import {PokemonContextProvider} from './contexts/PokemonContext.tsx';
 
 function App() {
 
 	return (
 		<>
 			<div id="app">
-				<PokemonCardSection />
+				<PokemonContextProvider>
+					<PokemonCardSection />
+				</PokemonContextProvider>
 			</div>
 		</>
 	);

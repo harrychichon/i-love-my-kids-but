@@ -1,12 +1,12 @@
 import './PokemonCardSection.scss';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import PokemonCard from './PokemonCard/PokemonCard.tsx';
 import useFetch from '../../hooks/useFetch.tsx';
 import Form from './Form/Form.tsx';
 import mapTypes from '../../utils/MapTypes.tsx';
 import Loading from './Loading/Loading.tsx';
 import Effectiveness from './Effectiveness/Effectiveness.tsx';
-
+import {usePokemonContext} from '../../contexts/PokemonContext.tsx';
 
 export type Pokemon = {
 	abilities: Array<{
@@ -274,7 +274,6 @@ type PokemonResult = {
 
 export default function PokemonCardSection() {
 
-
 	const isPokemon = (data: unknown): data is Pokemon =>
 		typeof data === 'object' && data !== null && 'weight' in data;
 
@@ -283,11 +282,16 @@ export default function PokemonCardSection() {
 		isPokemon,
 	);
 
-
-	const [filteredPokemon, setFilteredPokemon] = useState<Pokemon[] | null>(null);
-	const [searchQuery, setSearchQuery] = useState<string>('');
-	const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-	const [shiny, setShiny] = useState(false);
+	const {
+		filteredPokemon,
+		setFilteredPokemon,
+		searchQuery,
+		setSearchQuery,
+		selectedTypes,
+		setSelectedTypes,
+		shiny,
+		setShiny,
+	} = usePokemonContext();
 
 	const handleClick = () => {
 		setFilteredPokemon((prev) => (prev === allPokemon ? prev : allPokemon));
@@ -328,7 +332,6 @@ export default function PokemonCardSection() {
 		}
 	};
 
-
 	useEffect(() => {
 		if (!allPokemon) return;
 
@@ -347,8 +350,7 @@ export default function PokemonCardSection() {
 		}
 
 		setFilteredPokemon(filtered);
-	}, [searchQuery, selectedTypes, allPokemon]);
-
+	}, [searchQuery, selectedTypes, allPokemon, setFilteredPokemon]);
 
 	if (loading) return <Loading />;
 

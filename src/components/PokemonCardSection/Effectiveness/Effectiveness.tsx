@@ -1,8 +1,9 @@
 import './Effectiveness.scss';
 import useFetch from '../../../hooks/useFetch.tsx';
-import {useState} from 'react';
+import {usePokemonContext} from '../../../contexts/PokemonContext.tsx';
 
 //TODO exportera fetchade types till Form
+//TODO flytta isType till useFetch
 
 type TypeResult = {
 	name: string;
@@ -157,13 +158,14 @@ export default function Effectiveness() {
 		'https://pokeapi.co/api/v2/type',
 		isType,
 	);
-	const [selectedType, setSelectedType] = useState<Type | null>(null);
+
+	const {selectedEffectivity, setSelectedEffectivity} = usePokemonContext();
 
 
 	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 
 		const selected = allTypes?.find((type) => type.name.toUpperCase() === e.target.value);
-		setSelectedType(selected ?? null);
+		setSelectedEffectivity(selected ?? null);
 	};
 
 	return (
@@ -171,7 +173,8 @@ export default function Effectiveness() {
 			<section className="Effectiveness">
 				<h2>Damage multipliers</h2>
 				<div className="FilterContainer">
-					<select className={selectedType?.name.toLowerCase()} name="types"
+					<select className={selectedEffectivity?.name.toLowerCase()}
+					        name="types"
 					        id="types-drop-down"
 					        onChange={handleChange}>
 						<option value="Choose a type">Choose a type</option>
@@ -182,24 +185,24 @@ export default function Effectiveness() {
 						))}
 					</select>
 				</div>
-				{selectedType ? (
+				{selectedEffectivity ? (
 					<div className="ActiveType">
 						<fieldset className="Attacking">
 							<legend>Attacking</legend>
 							<ul className="Double">x2
-								{selectedType.damage_relations.double_damage_to.map((doubleDamageTo) =>
+								{selectedEffectivity.damage_relations.double_damage_to.map((doubleDamageTo) =>
 									<li
 										key={doubleDamageTo.name}
 										className={doubleDamageTo.name}>{doubleDamageTo.name.toUpperCase()}</li>)}
 							</ul>
 							<ul className="Half">x½
-								{selectedType.damage_relations.half_damage_to.map((halfDamageTo) =>
+								{selectedEffectivity.damage_relations.half_damage_to.map((halfDamageTo) =>
 									<li
 										key={halfDamageTo.name}
 										className={halfDamageTo.name}>{halfDamageTo.name.toUpperCase()}</li>)}
 							</ul>
 							<ul className="Zero">x0
-								{selectedType.damage_relations.no_damage_to.map((noDamageTo) =>
+								{selectedEffectivity.damage_relations.no_damage_to.map((noDamageTo) =>
 									<li
 										key={noDamageTo.name}
 										className={noDamageTo.name}>{noDamageTo.name.toUpperCase()}</li>)}
@@ -208,19 +211,19 @@ export default function Effectiveness() {
 						<fieldset className="Defending">
 							<legend>Defending</legend>
 							<ul className="Double">x2
-								{selectedType.damage_relations.double_damage_from.map((doubleDamageFrom) =>
+								{selectedEffectivity.damage_relations.double_damage_from.map((doubleDamageFrom) =>
 									<li
 										key={doubleDamageFrom.name}
 										className={doubleDamageFrom.name}>{doubleDamageFrom.name.toUpperCase()}</li>)}
 							</ul>
 							<ul className="Half">x½
-								{selectedType.damage_relations.half_damage_from.map((halfDamageFrom) =>
+								{selectedEffectivity.damage_relations.half_damage_from.map((halfDamageFrom) =>
 									<li
 										key={halfDamageFrom.name}
 										className={halfDamageFrom.name}>{halfDamageFrom.name.toUpperCase()}</li>)}
 							</ul>
 							<ul className="Zero">x0
-								{selectedType.damage_relations.no_damage_from.map((noDamageFrom) =>
+								{selectedEffectivity.damage_relations.no_damage_from.map((noDamageFrom) =>
 									<li
 										key={noDamageFrom.name}
 										className={noDamageFrom.name}>{noDamageFrom.name.toUpperCase()}</li>)}

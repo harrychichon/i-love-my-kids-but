@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {usePokemonContext} from '../contexts/PokemonContext.tsx';
 
 type BaseResult = {
 	name: string;
@@ -16,9 +17,8 @@ export default function useFetch<T extends BaseResult, U>(
 	url: string,
 	isType: (data: unknown) => data is U,
 ) {
-	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState<U[] | null>(null);
-	const [error, setError] = useState<string | null>(null);
+	const {loading, setLoading, error, setError} = usePokemonContext();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -51,12 +51,13 @@ export default function useFetch<T extends BaseResult, U>(
 			} finally {
 				setTimeout(() => {
 					setLoading(false);
-				}, 2000);
+				}, 1000);
 			}
 		};
 
 		fetchData();
 	}, [url]);
+
 
 	return {loading, data, error};
 }
