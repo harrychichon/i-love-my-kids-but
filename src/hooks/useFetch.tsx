@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
-import {usePokemonContext} from '../contexts/PokemonContext.tsx';
+import { useEffect, useState } from 'react';
+import { usePokemonContext } from './useContext';
 
 type BaseResult = {
 	name: string;
@@ -15,10 +15,10 @@ type Endpoint<T extends BaseResult> = {
 
 export default function useFetch<T extends BaseResult, U>(
 	url: string,
-	isType: (data: unknown) => data is U,
+	isType: (data: unknown) => data is U
 ) {
 	const [data, setData] = useState<U[] | null>(null);
-	const {loading, setLoading, error, setError} = usePokemonContext();
+	const { loading, setLoading, error, setError } = usePokemonContext();
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -42,7 +42,7 @@ export default function useFetch<T extends BaseResult, U>(
 						}
 
 						throw new Error('Unexpected data structure');
-					}),
+					})
 				);
 
 				setData(fetchedData);
@@ -58,6 +58,5 @@ export default function useFetch<T extends BaseResult, U>(
 		fetchData();
 	}, [url]);
 
-
-	return {loading, data, error};
+	return { loading, data, error };
 }
